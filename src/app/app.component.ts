@@ -9,6 +9,15 @@ export class AppComponent {
   title = 'MyFirstAngular';
   months = ['一月','二月','三月','四月','五月','六月','七月'
     ,'八月','九月','十月','十一月','十二月'];   //月份陣列
-  isavailable = false; //設定變數是否能存取
-
+  isavailable = true; //設定變數是否能存取
+  today = new Date();
+  jsonval = {name:'Max',age:'26',company:'特力集團',address:'台北市內湖區'};
+  myClickFunction(event) {
+    alert("按鈕事件觸發了!");
+    console.log(event);
+  }
+  changeMonths(event){
+    alert("月份更換了!!");
+    console.log(event);
+  }
 }
