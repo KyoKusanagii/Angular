@@ -28,6 +28,9 @@
 </div>
 
 <span *ngIf="isavailable;then condition1 else condition2">請顯示true或false</span><br>
+<!--也可以寫成-->
+<ng-template [ngIf]="isavailable">請顯示true或false:(ng-template)的寫法</ng-template><br>
+<!--ng-template是結構類 directive ( Structural directives ) — 改變 view 的結構-->
 <ng-template #condition1>請顯示true或false:{{isavailable}}</ng-template>
 <ng-template #condition2>請顯示true或false:{{isavailable}}</ng-template>
 <span>事件演示範例</span>  <button class="btn btn-danger" (click)="myClickFunction($event)">點我</button>
