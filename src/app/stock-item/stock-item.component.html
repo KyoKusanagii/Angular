@@ -1,0 +1,7 @@
+<div class="stock-containder">
+
+  <div class="name"><h3>{{stock.name + '(' + stock.code + ')'}}</h3></div>
+  <!--postiveChange會取代現有類別price-->
+  <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">${{stock.price}}</div>
+  <button (click)="toggleFavorite($event)" [disabled]="stock.favorite">加入最愛</button>
+</div>

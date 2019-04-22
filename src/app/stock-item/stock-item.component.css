@@ -1,0 +1,18 @@
+.stock-containder{
+  border:1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.stock-containder .name h3 , .stock-containder .name h4{
+  display: inline-block;
+}
+
+.positive{
+  color: green;
+}
+
+.negative{
+  color: red;
+}

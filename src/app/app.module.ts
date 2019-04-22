@@ -8,13 +8,15 @@ import { ChangeTextDirective } from './change-text.directive';
 import { SqrtPipe } from './sqrt.pipe';
 import { RouterModule} from '@angular/router';
 import {MyserviceService} from './myservice.service';
+import { StockItemComponent } from './stock-item/stock-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewCmpComponent,
     ChangeTextDirective,
-    SqrtPipe
+    SqrtPipe,
+    StockItemComponent
   ],
   imports: [
     BrowserModule,
