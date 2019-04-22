@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MyserviceService} from '../myservice.service';
 
 @Component({
   selector: 'app-new-cmp',                   //給定new-cmp底下的component.html自訂標籤
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCmpComponent implements OnInit {
   newcomponent = "NewComponet建立了";
-  constructor() { }
-
+  constructor(private myservice: MyserviceService) { }
+  todaydate;
+  newcomponentproperty;
+  newcomponent = "進入了Newcomponent";
   ngOnInit() {
+    this.todaydate = this.myservice.showTodayDate();
+    this.newcomponentproperty = this.myservice.serviceproperty;
   }
 
 }
