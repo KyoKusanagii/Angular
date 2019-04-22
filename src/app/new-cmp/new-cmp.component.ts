@@ -7,7 +7,7 @@ import {MyserviceService} from '../myservice.service';
   styleUrls: ['./new-cmp.component.css']     //app/new-cmp底下的component.css檔案
 })
 export class NewCmpComponent implements OnInit {
-  newcomponent = "NewComponet建立了";
+  // newcomponent = "NewComponet建立了";
   constructor(private myservice: MyserviceService) { }
   todaydate;
   newcomponentproperty;
