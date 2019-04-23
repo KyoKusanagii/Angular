@@ -8,15 +8,9 @@ import {Stock} from '../model/stock';
 })
 export class StockItemComponent implements OnInit {
 
-  // public name:string;
-  // public code:string;
-  // public price:number;
-  // public previousPrice:number;
-  // public postiveChange:boolean;
-  // public favorite:boolean;
-  // constructor() { }
-
   public stock:Stock;
+  public stockClasses;
+  public stockStyles;
 
   ngOnInit() {
     // this.name = '測試股票公司';
@@ -27,7 +21,21 @@ export class StockItemComponent implements OnInit {
     // this.favorite = false;
 
     // 用物件的寫法
-    this.stock = new Stock('測試股票公司','TSC',85,80);
+    this.stock = new Stock('測試股票公司','TSC',100,80);
+    let diff = (this.stock.price / this.stock.previousPrice) - 1;
+    let largeChange = Math.abs(diff) > 1;
+
+    this.stockStyles = {
+      'border':'solid 3px',
+      'border-color': this.stock.isPositiveChange() ? 'green' : 'red'
+    };
+
+    this.stockClasses = {
+      'positive':this.stock.isPositiveChange(),
+      'negative':!this.stock.isPositiveChange(),
+      'large-change':largeChange,
+      'small-change':!largeChange
+    };
   }
 
   toggleFavorite(event){

@@ -1,4 +1,3 @@
-<a routerLink="welcome">前往歡迎畫面</a><br>
 <span>請選擇月份:</span>
   <select (change)="changeMonths($event)">
     <!--angular的陣列Foreach-->
@@ -34,14 +33,10 @@
   <p>自訂開根號通道</p>
   <span>25開根號通道為：{{25|sqrt}}</span>
 </div>
-<span>今天的日期是:{{todaydate}}</span>
-<p>用route-outlet連把new-cmp的內容顯示出來</p>
+<p>今天的日期是:{{todaydate}}</p>
+<a routerLink="welcome">前往歡迎畫面</a><br>
 <a routerLink="new-cmp">前往new-cmp</a><br>
-<a routerLink="user-info">顯示所有用戶資訊</a>
+<a routerLink="user-info">顯示所有用戶資訊</a><br>
+<a routerLink="stock-item">stock-item範例</a><br>
 <router-outlet></router-outlet>
 <!--<button (click)="myservice.sendHttpGet()">發送httpGet請求拿json</button>-->
-<hr>
-<div>
-  <h1>以下為stock-item範例</h1>
-  <app-stock-item></app-stock-item>
-</div>

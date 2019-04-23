@@ -25,6 +25,10 @@ const routes:Routes = [
   {
     path: 'welcome',
     component: WelcomeComponent
+  },
+  {
+    path: 'stock-item',
+    component: StockItemComponent
   }
 ];
 
