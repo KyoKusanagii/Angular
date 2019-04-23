@@ -9,6 +9,7 @@ import { SqrtPipe } from './sqrt.pipe';
 import { RouterModule} from '@angular/router';
 import {MyserviceService} from './myservice.service';
 import { StockItemComponent } from './stock-item/stock-item.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { StockItemComponent } from './stock-item/stock-item.component';
           path: 'new-cmp',
           component: NewCmpComponent
         }
-      ])
+      ]),
+    HttpClientModule
   ],
   providers: [MyserviceService],
   bootstrap: [AppComponent]
