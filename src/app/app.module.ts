@@ -6,11 +6,27 @@ import { NewCmpComponent } from './new-cmp/new-cmp.component';
 import {FormsModule} from '@angular/forms';
 import { ChangeTextDirective } from './change-text.directive';
 import { SqrtPipe } from './sqrt.pipe';
-import { RouterModule} from '@angular/router';
 import {MyserviceService} from './myservice.service';
 import { StockItemComponent } from './stock-item/stock-item.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes:Routes = [
+  {
+    path: 'new-cmp',
+    component: NewCmpComponent
+  },
+  {
+    path: 'user-info',
+    component: UserInfoComponent
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -19,24 +35,16 @@ import { UserInfoComponent } from './user-info/user-info.component';
     ChangeTextDirective,
     SqrtPipe,
     StockItemComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot([
-        {
-          path: 'new-cmp',
-          component: NewCmpComponent
-        },
-        {
-          path: 'user-info',
-          component: UserInfoComponent
-        }
-      ]),
+    RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [MyserviceService],
+  providers: [MyserviceService,WelcomeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MyserviceService} from './myservice.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {WelcomeComponent} from './welcome/welcome.component';
 
 @Component({
   selector: 'app-root',                  // 前端的app-root標籤
   templateUrl: './app.component.html',  // app底下的component.html檔案
   styleUrls: ['./app.component.css']  // app底下的component.css檔案
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-  constructor(private myservice: MyserviceService) {}
-  title = 'MyFirstAngular';
+  constructor(private myservice: MyserviceService,private welcome:WelcomeComponent) {}
   todaydate;
   componentproperty;
   months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月'

@@ -1,31 +1,10 @@
-<div style="text-align:center">
-  <h1>
-    <p>Welcome to {{ title}}!</p>
-    <p>Welcome to {{ title | uppercase}}!</p>
-    <p>Welcome to {{ title | lowercase}}!</p>
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-  <span>請選擇月份:</span>
+<a routerLink="welcome">前往歡迎畫面</a><br>
+<span>請選擇月份:</span>
   <select (change)="changeMonths($event)">
     <!--angular的陣列Foreach-->
     <option *ngFor="let i of months">{{i}}</option>
   </select>
   <p>月份陣列:{{months}}</p>
-</div>
 
 <span *ngIf="isavailable;then condition1 else condition2">請顯示true或false</span><br>
 <!--也可以寫成-->
@@ -49,7 +28,7 @@
 </div>
 <div>
   <p>字串切割通道:</p>
-  <span>把"{{title}}"做切割</span><b>{{title | slice:2:6}}</b>
+  <span>把"{{welcome.title}}"做切割</span><b>{{welcome.title | slice:2:6}}</b>
 </div>
 <div>
   <p>自訂開根號通道</p>
