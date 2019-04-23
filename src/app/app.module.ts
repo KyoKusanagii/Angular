@@ -10,6 +10,7 @@ import { RouterModule} from '@angular/router';
 import {MyserviceService} from './myservice.service';
 import { StockItemComponent } from './stock-item/stock-item.component';
 import {HttpClientModule} from '@angular/common/http';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {HttpClientModule} from '@angular/common/http';
     NewCmpComponent,
     ChangeTextDirective,
     SqrtPipe,
-    StockItemComponent
+    StockItemComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,10 @@ import {HttpClientModule} from '@angular/common/http';
         {
           path: 'new-cmp',
           component: NewCmpComponent
+        },
+        {
+          path: 'user-info',
+          component: UserInfoComponent
         }
       ]),
     HttpClientModule

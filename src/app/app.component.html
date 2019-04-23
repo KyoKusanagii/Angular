@@ -56,37 +56,11 @@
   <span>25開根號通道為：{{25|sqrt}}</span>
 </div>
 <span>今天的日期是:{{todaydate}}</span>
-<app-new-cmp></app-new-cmp>
 <p>用route-outlet連把new-cmp的內容顯示出來</p>
-<a routerLink="new-cmp">前往new-cmp</a>
+<a routerLink="new-cmp">前往new-cmp</a><br>
+<a routerLink="user-info">顯示所有用戶資訊</a>
 <router-outlet></router-outlet>
-<button (click)="myservice.sendHttpGet()">發送httpGet請求拿json</button>
-<div>
-  <h4>顯示拿到的所有用戶資訊</h4>
-  <ul *ngFor="let data of myservice.httpdata">
-    <li>
-      <p>*************************************************</p>
-      姓名:<b>{{data.name}}</b><br>
-      <p>個人資訊<br>
-        電子郵件:<b>{{data.email}}</b><br>
-        手機:<b>{{data.phone}}</b><br>
-        使用者名稱:<b>{{data.username}}</b><br>
-        個人網站:<b>{{data.website}}</b><br>
-      </p>
-      <p>地址:<br>
-          街道:<b>{{data.address.street}}</b><br>
-          城市:<b>{{data.address.city}}}</b><br>
-          郵遞區號:<b>{{data.address.zipcode}}</b><br>
-          緯度:<b>{{data.address.geo.lat}}</b><br>
-          經度:<b>{{data.address.geo.lng}}</b><br>
-      </p>
-      <p>公司:<br>
-          名稱:<b>{{data.company.name}}</b>
-      </p>
-      <p>*************************************************</p>
-    </li>
-  </ul>
-</div>
+<!--<button (click)="myservice.sendHttpGet()">發送httpGet請求拿json</button>-->
 <hr>
 <div>
   <h1>以下為stock-item範例</h1>
