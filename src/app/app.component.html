@@ -39,4 +39,27 @@
 <a routerLink="user-info">顯示所有用戶資訊</a><br>
 <a routerLink="stock-item">stock-item範例</a><br>
 <router-outlet></router-outlet>
+<p>Input</p>
+  <!--
+  stockForInput先在app.component.ts初始化設定好，此stock為趨勢(TREND)
+  然後直接把整個物件塞給stock-item.component.ts裡面@Input的stock物件，
+  這樣就能在app.component.ts的範圍裡直接設定好值給子模板，就不用在stock-item.component.ts裡面設定物件
+  -->
+  <app-stock-item [stock]="stockForInput"></app-stock-item>
+<p>************************************************************</p>
+<p>Output</p>
+<!--
+  1.stockForOutput先在app.component.ts初始化設定好，此stock為華碩(ASUS)
+  然後直接把整個物件塞給stock-item.component.ts裡面@Input的stock物件，
+  這樣就能在app.component.ts的範圍裡直接設定好值給子模板，就不用在stock-item.component.ts裡面設定物件
+
+  2.stock-item.component.ts的onToggleFavoritem與app.component.ts的onToggleFavorite方法並沒有關聯，
+    把app.component.ts的onToggleFavorite方法加上傾聽toggleFavorite事件，
+    stock-item.component.html此時設定值為stockForOutput，並且秀在畫面上，此時按下加入最愛，
+    會呼叫stock-item.component.ts的onToggleFavorite的方法，並且把父模板的stockForOutput傳給子模板的@Input stock物件
+    又stock-item.component.ts的onToggleFavorite的方法設定當有監聽toggleFavorite的方法時，那些方法都會收到@Input的stock物件
+    而這時的stock物件事就是原先設定好的華碩(ASUS)，所以最後console.log顯示華碩。
+  -->
+  <app-stock-item [stock]="stockForOutput" (toggleFavorite)="onToggleFavorite($event)"></app-stock-item>
+<p>************************************************************</p>
 <!--<button (click)="myservice.sendHttpGet()">發送httpGet請求拿json</button>-->

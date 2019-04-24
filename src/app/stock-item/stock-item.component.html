@@ -1,11 +1,17 @@
-<div class="stock-containder">
-
+<div class="stock-containder" *ngFor="let stock of stocks;index as i; trackBy:trackStockByCode">
   <div class="name"><h3>{{stock.name + '(' + stock.code + ')'}}</h3></div>
   <!--postiveChange會取代現有類別price-->
-  <!--<div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">${{stock.price}}</div>-->
+  <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">${{stock.price}}</div>
   <!--<div [ngClass]="stockClasses" [ngStyle]="stockStyles">${{stock.price}}</div>-->
-  <div class="price"
-       [class.positive]="stock.isPositiveChange()"
-       [class.negative]="!stock.isPositiveChange()" [ngStyle]="stockStyles">${{stock.price}}</div>
-  <button (click)="toggleFavorite($event)" *ngIf="!stock.favorite">加入最愛</button>
+  <!--<div class="price"-->
+       <!--[class.positive]="stock.isPositiveChange()"-->
+       <!--[class.negative]="!stock.isPositiveChange()" [ngStyle]="stockStyles">${{stock.price}}</div>-->
+  <!--<button (click)="toggleFavorite($event,i)" *ngIf="!stock.favorite">加入最愛</button>-->
+  <!--<button (click)="toggleFavorite($event,i)" [disabled]="stock.favorite">加入最愛</button>-->
+  <button (click)="onToggleFavorite($event)" *ngIf="!stock.favorite">加入最愛</button>
+</div>
+<div class="stock-containder">
+  <div class="name"><h3>{{stock.name + '(' + stock.code + ')'}}</h3></div>
+  <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">${{stock.price}}</div>
+  <button (click)="onToggleFavorite($event)">加入最愛</button>
 </div>

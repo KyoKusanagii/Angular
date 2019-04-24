@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MyserviceService} from './myservice.service';
 import {WelcomeComponent} from './welcome/welcome.component';
+import {Stock} from "./model/stock";
 
 @Component({
   selector: 'app-root',                  // 前端的app-root標籤
@@ -8,7 +9,9 @@ import {WelcomeComponent} from './welcome/welcome.component';
   styleUrls: ['./app.component.css']  // app底下的component.css檔案
 })
 export class AppComponent implements OnInit{
-
+  title = '股市APP';
+  public stockForInput:Stock;
+  public stockForOutput:Stock;
   constructor(private myservice: MyserviceService,private welcome:WelcomeComponent) {}
   todaydate;
   componentproperty;
@@ -32,5 +35,12 @@ export class AppComponent implements OnInit{
     this.myservice.serviceproperty = '元件建立了';
     this.componentproperty = this.myservice.serviceproperty;
     console.log(this.componentproperty);
+    this.stockForInput = new Stock('趨勢','TREND',45,90);
+    this.stockForOutput = new Stock('華碩','ASUS',40,300);
+  }
+
+  onToggleFavorite(stock:Stock){
+    console.log('最喜歡的股票',stock,'已經觸發了');
+    this.stockForOutput.favorite = !this.stockForOutput.favorite;
   }
 }
