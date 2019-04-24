@@ -1,4 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  AfterContentChecked, AfterContentInit,
+  AfterViewChecked, AfterViewInit,
+  Component,
+  DoCheck,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output, SimpleChanges
+} from '@angular/core';
 import {Stock} from '../model/stock';
 
 @Component({
@@ -6,7 +17,7 @@ import {Stock} from '../model/stock';
   templateUrl: './stock-item.component.html',
   styleUrls: ['./stock-item.component.css']
 })
-export class StockItemComponent implements OnInit {
+export class StockItemComponent implements OnInit{
 
   @Input() public stock:Stock;
   @Output() private toggleFavorite: EventEmitter<Stock>;  //自訂事件觸發
@@ -18,8 +29,38 @@ export class StockItemComponent implements OnInit {
   constructor(){
     this.toggleFavorite = new EventEmitter<Stock>();
   }
+
+  // ngAfterContentChecked(): void {
+  //   console.log('Stock Item component - After Content Checked!');
+  // }
+  //
+  // ngAfterViewChecked(): void {
+  //   console.log('Stock Item component - After View Checked!');
+  // }
+  //
+  // ngAfterViewInit(): void {
+  //   console.log('Stock Item component - After View Init!');
+  // }
+  //
+  // ngDoCheck(): void {
+  //   console.log('Stock Item component - Do Check!');
+  // }
+  //
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('Stock Item component - On Changes!',changes);
+  // }
+  //
+  // ngOnDestroy(): void {
+  //   console.log('Stock Item component - On Destroy!');
+  // }
+  //
+  // ngAfterContentInit(): void {
+  //   console.log('Stock Item component - After Content Init!');
+  // }
+
   ngOnInit() {
     // 用物件的寫法
+    // console.log('Stock Item component - On Init!');
     this.stocks = [
       new Stock('鴻海','TSC',100,80),
       new Stock('台積電','SSC',50,60),

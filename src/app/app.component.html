@@ -62,4 +62,12 @@
   -->
   <app-stock-item [stock]="stockForOutput" (toggleFavorite)="onToggleFavorite($event)"></app-stock-item>
 <p>************************************************************</p>
+<p>投射</p>
+<app-stock-item [stock]="stockForOutput">
+  <span>這裡都是我投射的東西啦~~~~~
+    <button (click)="testMethod()">這是Button1</button>
+  </span>
+</app-stock-item>
+<app-stock-item [stock]="stockForOutput"><span>這裡都是我投射的東西啦~~~~~，沒有Button</span></app-stock-item>
+<p>************************************************************</p>
 <!--<button (click)="myservice.sendHttpGet()">發送httpGet請求拿json</button>-->

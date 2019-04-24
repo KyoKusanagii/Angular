@@ -1,4 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  AfterContentChecked, AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  OnChanges,
+  OnDestroy,
+  OnInit, SimpleChanges
+} from '@angular/core';
 import {MyserviceService} from './myservice.service';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {Stock} from "./model/stock";
@@ -29,7 +38,41 @@ export class AppComponent implements OnInit{
     console.log(event);
   }
 
+  // ngAfterContentChecked(): void {
+  //   console.log('App component - After Content Checked!');
+  // }
+  //
+  // ngAfterViewChecked(): void {
+  //   console.log('App component - After View Checked!');
+  // }
+  //
+  // ngAfterViewInit(): void {
+  //   console.log('App component - After View Init!');
+  // }
+  //
+  // ngDoCheck(): void {
+  //   console.log('App component - Do Check!');
+  // }
+  //
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('App component - On Changes!',changes);
+  // }
+  //
+  // ngOnDestroy(): void {
+  //   console.log('App component - On Destroy!');
+  // }
+  //
+  // ngAfterContentInit(): void {
+  //   console.log('App component - After Content Init!');
+  // }
+
+  testMethod(){
+    console.log('在AppComponent理觸發test Method');
+  }
+
+
   ngOnInit() {
+    // console.log('App component - On Init!');
     this.todaydate = this.myservice.showTodayDate();
     console.log(this.myservice.serviceproperty);
     this.myservice.serviceproperty = '元件建立了';
