@@ -58,7 +58,7 @@
     stock-item.component.html此時設定值為stockForOutput，並且秀在畫面上，此時按下加入最愛，
     會呼叫stock-item.component.ts的onToggleFavorite的方法，並且把父模板的stockForOutput傳給子模板的@Input stock物件
     又stock-item.component.ts的onToggleFavorite的方法設定當有監聽toggleFavorite的方法時，那些方法都會收到@Input的stock物件
-    而這時的stock物件事就是原先設定好的華碩(ASUS)，所以最後console.log顯示華碩。
+    而這時的stock物件就是原先設定好的華碩(ASUS)，所以最後console.log顯示華碩。
   -->
   <app-stock-item [stock]="stockForOutput" (toggleFavorite)="onToggleFavorite($event)"></app-stock-item>
 <p>************************************************************</p>
