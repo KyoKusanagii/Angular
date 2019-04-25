@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NewCmpComponent } from './new-cmp/new-cmp.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ChangeTextDirective } from './change-text.directive';
 import { SqrtPipe } from './sqrt.pipe';
 import {MyserviceService} from './myservice.service';
@@ -48,7 +48,8 @@ const routes:Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [MyserviceService,WelcomeComponent],
   bootstrap: [AppComponent]

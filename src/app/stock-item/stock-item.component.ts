@@ -62,9 +62,9 @@ export class StockItemComponent implements OnInit{
     // 用物件的寫法
     // console.log('Stock Item component - On Init!');
     this.stocks = [
-      new Stock('鴻海','TSC',100,80),
-      new Stock('台積電','SSC',50,60),
-      new Stock('廣達','LSC',70,200)
+      new Stock('鴻海','TSC',100,80,'CC交易所'),
+      new Stock('台積電','SSC',50,60,'DD交易所'),
+      new Stock('廣達','LSC',70,200,'EE交易所')
     ];
 
   //   let diff = (this.stocks.price / this.stocks.previousPrice) - 1;

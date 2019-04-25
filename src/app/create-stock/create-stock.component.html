@@ -1,7 +1,8 @@
+<p>*****************模板驅動表單*****************</p>
 <h2>創造股票表單</h2>
 <div class="form-group">
   <!--(ngSubmit) 表單提交時做什麼事-->
-  <form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">
+  <form (ngSubmit)="createStock(stockTemplateDrivenForm)" #stockTemplateDrivenForm="ngForm">
     <div>
       當股票無效，下面的元素會從綠色轉變為紅色
     </div>
@@ -67,8 +68,9 @@
       <button [disabled]="!confirmed" type="submit">創造股票</button>
   </form>
 </div>
-<h4>股票名稱是: {{stock | json}}</h4>
-<h4>資料是否被確認: {{confirmed}}</h4>
+<p>股票名稱是: {{stock | json}}</p>
+<p>資料是否被確認: {{confirmed}}</p>
+<p>*************************************************</p>
 
 <!--建立一個表單模型傳入元件，功能類似spring的modelAttribute-->
 <!--<div class="form-group">-->
@@ -104,3 +106,46 @@
     <!--<button [disabled]="!confirmed" type="submit">創造股票</button>-->
   <!--</form>-->
 <!--</div>-->
+
+<p>*****************反應式表單*****************</p>
+<div class="form-group">
+  <form [formGroup]="stockReactForm" (ngSubmit)="onSubmit()">
+    <div class="stock-name">
+      <input type="text" placeholder="股票名稱" name="stockName" formControlName="name">
+      <div *ngIf="stockReactForm.get('name').invalid &&
+        (stockReactForm.get('name').dirty || stockReactForm.get('name').touched)">
+        <b>股票名稱必填</b>
+      </div>
+    </div>
+    <div class="stock-code">
+      <input type="text" placeholder="股票代碼" name="stockCode" formControlName="code">
+    </div>
+    <div *ngIf="stockReactForm.get('code').invalid &&
+        (stockReactForm.get('code').dirty || stockReactForm.get('code').touched)">
+      <div *ngIf="stockReactForm.get('code').errors.required">
+        <b>股票代碼必填</b>
+      </div>
+      <div *ngIf="stockReactForm.get('code').errors.minlength">
+        <b>股票代碼至少要2碼</b>
+      </div>
+    </div>
+    <div class="stock-price">
+      <input type="number" placeholder="股票價格" name="stockPrice" formControlName="price">
+    </div>
+    <div *ngIf="stockReactForm.get('price').invalid &&
+        (stockReactForm.get('price').dirty || stockReactForm.get('price').touched)">
+      <div *ngIf="stockReactForm.get('price').errors.required">
+        <b>股票價格必填</b>
+      </div>
+      <div *ngIf="stockReactForm.get('price').errors.min">
+        <b>股票價格必須為正數</b>
+      </div>
+    </div>
+    <button type="submit">提交</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+    <button type="button" (click)="loadStockFromServer()">模擬股票從伺服器載入</button>
+    <button type="button" (click)="patchStockForm()">更新股票表單</button>
+  </form>
+</div>
+<p>Form Control Value:{{stockReactForm.value | json}}</p>
+<p>Form Control Status:{{stockReactForm.status | json}}</p>
