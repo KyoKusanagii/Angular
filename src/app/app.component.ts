@@ -78,8 +78,8 @@ export class AppComponent implements OnInit{
     this.myservice.serviceproperty = '元件建立了';
     this.componentproperty = this.myservice.serviceproperty;
     console.log(this.componentproperty);
-    this.stockForInput = new Stock('趨勢','TREND',45,90);
-    this.stockForOutput = new Stock('華碩','ASUS',40,300);
+    this.stockForInput = new Stock('趨勢','TREND',45,90,'AAA');
+    this.stockForOutput = new Stock('華碩','ASUS',40,300,'BBB');
   }
 
   onToggleFavorite(stock:Stock){

@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {RouterModule, Routes} from '@angular/router';
+import { CreateStockComponent } from './create-stock/create-stock.component';
 
 const routes:Routes = [
   {
@@ -40,7 +41,8 @@ const routes:Routes = [
     SqrtPipe,
     StockItemComponent,
     UserInfoComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CreateStockComponent
   ],
   imports: [
     BrowserModule,

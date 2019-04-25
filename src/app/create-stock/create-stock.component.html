@@ -1,0 +1,106 @@
+<h2>創造股票表單</h2>
+<div class="form-group">
+  <!--(ngSubmit) 表單提交時做什麼事-->
+  <form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">
+    <div>
+      當股票無效，下面的元素會從綠色轉變為紅色
+    </div>
+    <!--<input type="text" placeholder="股票名稱"-->
+           <!--[value]="stock.name" (input)="stock.name=$event.target.value">-->
+    <!--使用ngModel必加name屬性，屬性名可隨意填-->
+    <div class="stock-name">
+      <input type="text" placeholder="股票名稱" name="stockName" #stockName="ngModel"
+            [(ngModel)]="stock.name" required="required">
+    </div>
+    <div *ngIf="stockName.errors && stockName.errors.required">
+      <b>股票名稱必填</b>
+    </div>
+    <div>
+      當股票被修改，下面的元素會從綠色轉變為紅色
+    </div>
+    <div class="stock-code">
+      <input type="text" placeholder="股票代碼" name="stockCode" #stockCode="ngModel"
+             [(ngModel)]="stock.code" required="required" minlength="2">
+    </div>
+    <div *ngIf="stockCode.dirty && stockCode.invalid">
+      <div *ngIf="stockCode.errors.required">
+        <b>股票代碼必填</b>
+      </div>
+      <div *ngIf="stockCode.errors.minlength">
+        <b>股票代碼必須至少兩位</b>
+      </div>
+    </div>
+    <div>
+      當有人拜訪時，下面的元素會從綠色轉變為紅色
+    </div>
+    <div class="stock-price">
+      <input type="number" placeholder="股票價格" name="stockPrice" #stockPrice="ngModel"
+           [ngModel]="stock.price" (ngModelChange)="setStockPrice($event)" required="required">
+    </div>
+    <div *ngIf="stockPrice.dirty && stockPrice.invalid">
+      <div *ngIf="stockPrice.errors.required">
+        <b>股票價格必填</b>
+      </div>
+    </div>
+    <div class="stock-exchange">
+      <!--<input type="radio" placeholder="股票交易" name="stockChange"-->
+             <!--[(ngModel)]="stock.exchange" value="NYSE交易所">NYSE交易所-->
+    <!--</div>-->
+    <!--<div class="stock-exchange">-->
+      <!--<input type="radio" placeholder="股票交易" name="stockChange"-->
+              <!--[(ngModel)]="stock.exchange" value="NASDAQ交易所">NASDAQ交易所-->
+    <!--</div>-->
+    <!--<div class="stock-exchange">-->
+      <!--<input type="radio" placeholder="股票交易" name="stockChange"-->
+             <!--[(ngModel)]="stock.exchange" value="OTHER交易所">OTHER交易所-->
+        <select name="stockChange" [(ngModel)]="stock.exchange">
+            <option *ngFor="let exchange of exchanges" [ngValue]="exchange">{{exchange}}</option>
+        </select>
+    </div>
+    <div class="stock-confirm">
+      <!--checkbox連結到元件的boolean值時，勾選為true，不勾選為false-->
+      <input type="checkbox" placeholder="股票交易" name="stockConfirm" required="required"
+             [(ngModel)]="confirmed">
+      我確定上述資料都正確
+    </div>
+      <!--<button (click)="stock.name='test'">重置股票名稱</button>-->
+      <button [disabled]="!confirmed" type="submit">創造股票</button>
+  </form>
+</div>
+<h4>股票名稱是: {{stock | json}}</h4>
+<h4>資料是否被確認: {{confirmed}}</h4>
+
+<!--建立一個表單模型傳入元件，功能類似spring的modelAttribute-->
+<!--<div class="form-group">-->
+  <!--(ngSubmit) 表單提交時做什麼事-->
+  <!--<form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">-->
+    <!--<div ngModelGroup="stock">-->
+      <!--<div class="stock-name">-->
+        <!--<input type="text" placeholder="股票名稱" name="name"-->
+               <!--ngModel required="required">-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--</div>-->
+      <!--<div class="stock-code">-->
+        <!--<input type="text" placeholder="股票代碼" name="code" ngModel required="required" minlength="2">-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--</div>-->
+      <!--<div class="stock-price">-->
+        <!--<input type="number" placeholder="股票價格" name="price" ngModel required="required">-->
+      <!--</div>-->
+      <!--<div class="stock-exchange">-->
+        <!--<select name="stockChange" ngModel>-->
+          <!--<option *ngFor="let exchange of exchanges" [ngValue]="exchange">{{exchange}}</option>-->
+        <!--</select>-->
+      <!--</div>-->
+      <!--<div class="stock-confirm">-->
+        <!--&lt;!&ndash;checkbox連結到元件的boolean值時，勾選為true，不勾選為false&ndash;&gt;-->
+        <!--<input type="checkbox" placeholder="股票交易" name="stockConfirm" required="required"-->
+               <!--[(ngModel)]="confirmed">-->
+        <!--我確定上述資料都正確-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<button [disabled]="!confirmed" type="submit">創造股票</button>-->
+  <!--</form>-->
+<!--</div>-->
