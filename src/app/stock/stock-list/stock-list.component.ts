@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Stock} from "../../model/stock";
 import {StockService} from "../../services/stock.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-stock-list',
@@ -8,11 +9,11 @@ import {StockService} from "../../services/stock.service";
   styleUrls: ['./stock-list.component.css']
 })
 export class StockListComponent implements OnInit {
-  public stocks:Stock[];
+  public stocks$:Observable<Stock[]>;
   constructor(private stockService:StockService) { }
 
   ngOnInit() {
-    this.stocks = this.stockService.getStocks().subscribe(stocks => {this.stocks = stocks});  //Angular的service
+    this.stocks$ = this.stockService.getStocks();  //Angular的service
   }
 
   onToggleFavorite(stock:Stock){

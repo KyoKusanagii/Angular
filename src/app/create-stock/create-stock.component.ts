@@ -107,6 +107,8 @@ export class CreateStockComponent {
       this.stockService.createStock(this.stock).subscribe((result:any) => {
         this.message = result.msg;
         this.stock = new Stock('','',0,0,'訂閱物件交易所')
+        console.log(this.message);
+        console.log( this.stock);
       },(err) => {
         this.message = err.msg;
         // this.messageService.message = `創造了一支股票，股票代碼是:${this.stock.code}`;

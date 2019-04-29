@@ -17,6 +17,8 @@ import { StockListComponent } from './stock/stock-list/stock-list.component';
 import {StockService} from "./services/stock.service";
 import {MessageService} from "./services/message.service";
 import {Observable} from "rxjs";
+import { SpringbootComponent } from './springboot/springboot.component';
+import {SpringbootService} from "./services/springboot.service";
 
 const routes:Routes = [
   {
@@ -34,6 +36,10 @@ const routes:Routes = [
   {
     path: 'stock-item',
     component: StockItemComponent
+  },
+  {
+    path: 'springboot',
+    component: SpringbootComponent
   }
 ];
 
@@ -47,7 +53,8 @@ const routes:Routes = [
     UserInfoComponent,
     WelcomeComponent,
     CreateStockComponent,
-    StockListComponent
+    StockListComponent,
+    SpringbootComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +63,7 @@ const routes:Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [MyserviceService,WelcomeComponent,StockService,MessageService],
+  providers: [MyserviceService,WelcomeComponent,StockService,MessageService,SpringbootService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

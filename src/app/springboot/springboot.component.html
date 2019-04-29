@@ -1,0 +1,9 @@
+<div>
+  <h4>顯示拿到的所有資訊</h4>
+  <ul *ngFor="let data of springbootService.allData">
+    <li>
+      {{data|json}}
+    </li>
+  </ul>
+</div>
+
