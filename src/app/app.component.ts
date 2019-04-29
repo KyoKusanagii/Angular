@@ -11,6 +11,7 @@ import {
 import {MyserviceService} from './myservice.service';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {Stock} from "./model/stock";
+import {MessageService} from "./services/message.service";
 
 @Component({
   selector: 'app-root',                  // 前端的app-root標籤
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit{
   title = '股市APP';
   public stockForInput:Stock;
   public stockForOutput:Stock;
-  constructor(private myservice: MyserviceService,private welcome:WelcomeComponent) {}
+  constructor(private myservice: MyserviceService,private welcome:WelcomeComponent
+              ,private messageService:MessageService) {}
   todaydate;
   componentproperty;
   months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月'
@@ -80,6 +82,7 @@ export class AppComponent implements OnInit{
     console.log(this.componentproperty);
     this.stockForInput = new Stock('趨勢','TREND',45,90,'AAA');
     this.stockForOutput = new Stock('華碩','ASUS',40,300,'BBB');
+    this.messageService.message = '哈囉Message服務';
   }
 
   onToggleFavorite(stock:Stock){

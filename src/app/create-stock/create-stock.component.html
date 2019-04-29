@@ -1,11 +1,9 @@
 <p>*****************模板驅動表單*****************</p>
 <h2>創造股票表單</h2>
+<b>{{messageService.message}}</b>
 <div class="form-group">
   <!--(ngSubmit) 表單提交時做什麼事-->
   <form (ngSubmit)="createStock(stockTemplateDrivenForm)" #stockTemplateDrivenForm="ngForm">
-    <div>
-      當股票無效，下面的元素會從綠色轉變為紅色
-    </div>
     <!--<input type="text" placeholder="股票名稱"-->
            <!--[value]="stock.name" (input)="stock.name=$event.target.value">-->
     <!--使用ngModel必加name屬性，屬性名可隨意填-->
@@ -15,9 +13,6 @@
     </div>
     <div *ngIf="stockName.errors && stockName.errors.required">
       <b>股票名稱必填</b>
-    </div>
-    <div>
-      當股票被修改，下面的元素會從綠色轉變為紅色
     </div>
     <div class="stock-code">
       <input type="text" placeholder="股票代碼" name="stockCode" #stockCode="ngModel"
@@ -30,9 +25,6 @@
       <div *ngIf="stockCode.errors.minlength">
         <b>股票代碼必須至少兩位</b>
       </div>
-    </div>
-    <div>
-      當有人拜訪時，下面的元素會從綠色轉變為紅色
     </div>
     <div class="stock-price">
       <input type="number" placeholder="股票價格" name="stockPrice" #stockPrice="ngModel"

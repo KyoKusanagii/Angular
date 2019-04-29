@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {Stock} from "../model/stock";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {StockService} from "../services/stock.service";
+import {MessageService} from "../services/message.service";
 
 let counter = 1;
 
 @Component({
   selector: 'app-create-stock',
   templateUrl: './create-stock.component.html',
-  styleUrls: ['./create-stock.component.css']
+  styleUrls: ['./create-stock.component.css'],
+  providers:[MessageService]
 })
 
 
@@ -17,6 +20,7 @@ export class CreateStockComponent {
   public confirmed = false;
   exchanges = ['NYSE','NASDAQ','OTHER'];
   public nameControl = new FormControl();
+  message;
 
 
   // 一般反應式表單建構
@@ -29,10 +33,13 @@ export class CreateStockComponent {
   // FormBuilder反應式表單建構
   public stockReactForm:FormGroup;  //一張表單就是一個FormGroup，底下有很多FormControl
 
-  constructor(private fb:FormBuilder) { //FormBuilder能把原本好幾個new FormControl的寫法簡化，變成陣列的型式
+  //FormBuilder能把原本好幾個new FormControl的寫法簡化，變成陣列的型式
+  constructor(private fb:FormBuilder,private stockService:StockService,private messageService:MessageService) {
     // this.stock = new Stock('宏達電','HTC',0,0,'NASDAQ');
     this.stock = new Stock(`宏碁${counter++}`,'ACER',20,10,'NASDAQ');
+    this.messageService.message='Component Level:';
     this.createForm();
+
   }
 
   createForm(){
@@ -97,7 +104,14 @@ export class CreateStockComponent {
     console.log('股票表單:',stockTemplateDrivenForm);
     if(stockTemplateDrivenForm.valid){
       // this.stock = stockTemplateDrivenForm.value.stock;  ngModelGroup 模型驅動表單才會用到
-      console.log('創造了一支股票:',this.stock);
+      this.stockService.createStock(this.stock).subscribe((result:any) => {
+        this.message = result.msg;
+        this.stock = new Stock('','',0,0,'訂閱物件交易所')
+      },(err) => {
+        this.message = err.msg;
+        // this.messageService.message = `創造了一支股票，股票代碼是:${this.stock.code}`;
+        // this.messageService.message = `股票已經存在，股票代碼是:${this.stock.code}`;
+      });
     }else{
       console.error('股票表單是無效的狀態');
     }

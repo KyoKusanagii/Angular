@@ -13,6 +13,10 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {RouterModule, Routes} from '@angular/router';
 import { CreateStockComponent } from './create-stock/create-stock.component';
+import { StockListComponent } from './stock/stock-list/stock-list.component';
+import {StockService} from "./services/stock.service";
+import {MessageService} from "./services/message.service";
+import {Observable} from "rxjs";
 
 const routes:Routes = [
   {
@@ -42,7 +46,8 @@ const routes:Routes = [
     StockItemComponent,
     UserInfoComponent,
     WelcomeComponent,
-    CreateStockComponent
+    CreateStockComponent,
+    StockListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,7 @@ const routes:Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [MyserviceService,WelcomeComponent],
+  providers: [MyserviceService,WelcomeComponent,StockService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
