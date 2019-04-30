@@ -11,7 +11,11 @@ export class SpringbootComponent implements OnInit {
   constructor(private springbootService:SpringbootService) { }
 
   ngOnInit() {
-    this.springbootService.testSearch();
+    this.convertData(this.springbootService.testSearch());
+  }
+
+  convertData(data){
+    return Array.from(data);
   }
 
 }

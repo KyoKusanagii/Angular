@@ -20,7 +20,7 @@ export class SpringbootService {
 
   sendPost():Observable<any> {
     let url = 'http://localhost:8091/tms/applyApi/qryApplyFormStatus';
-    let headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-    return this.http.post(url, headers);
+    let headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
+    return this.http.post(url,{}, headers);
   }
 }
